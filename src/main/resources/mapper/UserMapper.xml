@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.codeshu.vueblog.mapper.UserMapper">
+    <insert id="saveUser" parameterType="com.codeshu.vueblog.entity.User" useGeneratedKeys="true" keyProperty="id">
+        insert into m_user(username,password,salt) values(#{username},#{password},#{salt})
+    </insert>
+    <select id="findUserByName" parameterType="string" resultType="com.codeshu.vueblog.entity.User">
+        select * from m_user where username=#{username}
+    </select>
+</mapper>
