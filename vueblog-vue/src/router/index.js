@@ -9,6 +9,7 @@ import Blogs from '../view/Blogs.vue'
 Vue.use(Router)
 
 export default new Router({
+  mode:'history', //指定为history模式
   //定义路由
   routes: [
     //访问根路径时，重定向到组件Blogs

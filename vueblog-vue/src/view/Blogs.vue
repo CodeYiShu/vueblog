@@ -1,12 +1,16 @@
 <template>
-  <div>Blog</div>
+  <div>
+    <Header></Header> 
+  </div>
 </template>
 
 <script>
-    export default {
-    }
+  //导入公共部分Header
+  import Header from "../components/Header"
+  export default {
+    //声明导入的组件
+    components:{Header}
+  }
 </script>
 
-<style>
-
-</style>
+<style></style>

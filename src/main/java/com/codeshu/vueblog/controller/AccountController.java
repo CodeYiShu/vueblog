@@ -63,7 +63,7 @@ public class AccountController {
 	public Result logout() {
 		//退出登录
 		SecurityUtils.getSubject().logout();
-		return null;
+		return Result.success("退出成功");
 	}
 
 	/**

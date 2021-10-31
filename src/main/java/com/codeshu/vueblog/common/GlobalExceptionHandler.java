@@ -3,6 +3,7 @@ package com.codeshu.vueblog.common;
 import com.codeshu.vueblog.common.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.ShiroException;
+import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -23,6 +24,13 @@ public class GlobalExceptionHandler {
 	public Result handler(ShiroException e){
 		log.error("运行时异常：-----------------{}",e);
 		return Result.fail(401,e.getMessage(),null);
+	}
+
+	@ResponseStatus(HttpStatus.UNAUTHORIZED) //因为前后端分离 返回一个状态 一般是401 密码错误
+	@ExceptionHandler(value =  IncorrectCredentialsException.class)//捕获IncorrectCredentialsException异常
+	public Result handle(IncorrectCredentialsException e){
+		log.error("运行时异常：-----------------{}",e);
+		return Result.fail(401,"密码错误",null);
 	}
 
 	@ResponseStatus(HttpStatus.BAD_REQUEST) //因为前后端分离 返回一个状态
@@ -58,6 +66,9 @@ public class GlobalExceptionHandler {
 		log.error("Assert异常:------------------>{}",e);
 		return Result.fail(e.getMessage());
 	}
+
+
+
 }
 
 

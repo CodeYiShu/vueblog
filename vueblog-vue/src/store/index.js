@@ -23,8 +23,8 @@ export default new Vuex.Store({ //创建Store组件
       REMOVEALL:(state)=>{  //state就是上面存储数据的state属性
        state.jwt = '';
        state.userInfo = {};
-       localStorage.setItem("jwt",'');
-       localStorage.setItem("userInfo",{});
+       localStorage.removeItem("jwt",'');
+       sessionStorage.removeItem("userInfo")
       }
   },
   //相当于getter

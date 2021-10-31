@@ -9,6 +9,8 @@ import router from './router'
 import axios from 'axios';
 //导入store
 import store from './store'
+//引入axios.js配置文件
+import "./axios.js"
 
 //显式声明ElementUI模块
 Vue.use(ElementUI)

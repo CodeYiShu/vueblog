@@ -55,6 +55,7 @@ public class JwtFilter extends AuthenticatingFilter {
 		HttpServletRequest request = (HttpServletRequest)servletRequest;
 		//获取头部token
 		String token = request.getHeader("Authorization");
+
 		if(StringUtils.isEmpty(token)){ //没有携带token，则直接让他返回true，可能是游客或登录
 			return true;
 		}else{

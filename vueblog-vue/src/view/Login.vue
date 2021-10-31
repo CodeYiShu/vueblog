@@ -51,16 +51,15 @@
                 if (valid) {
                   //保存全局this
                     const _this = this;
-                    alert("submit!");
                     //发送登录请求，携带表单数据到请求体
-                    this.$axios.post("http://localhost:8081/login",this.ruleForm)
+                    this.$axios.post("/login",this.ruleForm)
                     .then(response =>{
                       const token = response.headers['authorization'];
                       const userMessage = response.data.data;
+                      console.log(response.data.data)
                       _this.$store.commit("SET_JWT",token); //将JWT保存到store中
                       _this.$store.commit("SET_USERINFO",userMessage); //将用户信息保存到store中
-                      console.log(_this.$store.getters.getJwt); //获取store中保存的JWT
-                      console.log(_this.$store.getters.getUserInfo); //获取store中保存的userInfo
+
                       this.$router.push("/blogs");
                     })
                 } else {
