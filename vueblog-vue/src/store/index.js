@@ -38,4 +38,5 @@ export default new Vuex.Store({ //创建Store组件
   },
   actions: { },
   modules: { }
+
 })

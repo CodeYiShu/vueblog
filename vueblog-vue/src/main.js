@@ -11,9 +11,14 @@ import axios from 'axios';
 import store from './store'
 //引入axios.js配置文件
 import "./axios.js"
+//导入mavon-editor模块和他的css
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 
 //显式声明ElementUI模块
 Vue.use(ElementUI)
+//显式声明mavonEditor模块
+Vue.use(mavonEditor)
 //引用全局
 Vue.prototype.$axios = axios 
 

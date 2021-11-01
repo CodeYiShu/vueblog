@@ -48,8 +48,7 @@ public class BlogController {
 		Assert.notNull(blog,"该博客已被删除");
 		return Result.success(blog);
 	}
-	//@Validated校验
-	//@RequestBody
+
 	//添加删除  木有id则添加 有id则编辑
 	@RequiresAuthentication  //需要认证之后才能操作
 	@PostMapping("/blog/edit")

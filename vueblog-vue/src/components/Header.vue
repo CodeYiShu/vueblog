@@ -37,15 +37,12 @@ export default {
             */
             _this.$axios.get("/logout",{
                 headers:{  //请求头中携带保存jwt
-                    "Authorization":_this.$store.getters.getJwt //可以去store中保存的数据获取
                     //可以直接去localStorage中获取
-                    // "Authorization":localStorage.getItem("jwt")
+                    "Authorization":localStorage.getItem("jwt")
                 }
             }).then(response=>{
-                console.log("退出登录：" + this.$store.getters.getUserInfo.username)                
                 //清除store和localStorage保存的jwt和用户信息
                 _this.$store.commit("REMOVEALL");
-                console.log("退出登录：" + this.$store.getters.getUserInfo.username)                
                 //路由到登录页面
                 _this.$router.push("/login")    
                 
@@ -53,13 +50,14 @@ export default {
         }
     },
     created(){
-        //如果store中保存的用户信息不为空（他在登录时被保存）
-        if(this.$store.getters.getUserInfo){  
+        //如果sessionStorage中保存的用户信息不为空（他在登录时被保存）
+        if(sessionStorage.getItem("userInfo")){  
+            console.log("userInfo" + JSON.parse(sessionStorage.getItem("userInfo")))
             //将用户信息中的用户名设置给数据user.username
-            this.user.username = this.$store.getters.getUserInfo.username;
+            this.user.username = JSON.parse(sessionStorage.getItem("userInfo")).username;
             //将用户信息中的头像地址设置给数据user.avatar
-            this.user.avatar = this.$store.getters.getUserInfo.avatar;
-            //store中有用户信息表示已经登录（退出后会在上面被清除），此时设置hasLogin为true，显示退出按钮
+            this.user.avatar = JSON.parse(sessionStorage.getItem("userInfo")).avatar;
+            //sessionStorage有用户信息表示已经登录（退出后会在上面被清除），此时设置hasLogin为true，显示退出按钮
             this.hasLogin = true;
         }
     }
