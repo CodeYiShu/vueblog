@@ -5,6 +5,7 @@ import Login from '../view/Login.vue'
 import BlogDetail from '../view/BlogDetail.vue'
 import BlogEdit from '../view/BlogEdit.vue'
 import Blogs from '../view/Blogs.vue'
+import Register from "../view/Register.vue"
 //声明Router模块
 Vue.use(Router)
 
@@ -33,8 +34,11 @@ export default new Router({
     //BlogEdit组件的路由路径是/blog/add
     {
       path: '/blog/add',
-      name: 'BlogEdit',
-      component: BlogEdit
+      name: 'BlogAdd',
+      component: BlogEdit,
+      meta:{
+        requireAuth:true
+      }
     },
     //BlogDetail组件的路由路径是/blog/:blogid，绑定一个参数博客id
     {
@@ -46,7 +50,16 @@ export default new Router({
     {
       path: '/blog/:blogid/edit',
       name: 'BlogEdit',
-      component: BlogEdit
+      component: BlogEdit,
+      meta:{
+        requireAuth:true
+      }
+    },
+    //Register组件的路由路径是/register
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
     }
   ]
 })

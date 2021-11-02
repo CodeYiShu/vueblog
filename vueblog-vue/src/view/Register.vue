@@ -15,9 +15,8 @@
                 <el-input v-model="ruleForm.password"></el-input>
             </el-form-item>          
             <el-form-item>
-                <el-button type="primary" @click="submitForm('ruleForm')">立即登录</el-button>
+                <el-button type="primary" @click="submitForm('ruleForm')">立即注册</el-button>
                 <el-button @click="resetForm('ruleForm')">重置</el-button>
-                <el-button><router-link to="/register">注册</router-link></el-button>
             </el-form-item>
         </el-form>
       </el-main>
@@ -32,7 +31,7 @@
         return {
         ruleForm: {
             username: "zhangsan",
-            password:"123456"
+            password:"123456",
         },
         rules: {
             username: [
@@ -52,16 +51,11 @@
                 if (valid) {
                   //保存全局this
                     const _this = this;
-                    //发送登录请求，携带表单数据到请求体
-                    this.$axios.post("/login",this.ruleForm)
+                    //发送注册请求，携带表单数据到请求体
+                    this.$axios.post("/register",this.ruleForm)
                     .then(response =>{
-                      const token = response.headers['authorization'];
-                      const userMessage = response.data.data;
-                      console.log(response.data.data)
-                      _this.$store.commit("SET_JWT",token); //将JWT保存到store中
-                      _this.$store.commit("SET_USERINFO",userMessage); //将用户信息保存到store中
-
-                      this.$router.push("/blogs");
+                      alert("注册成功，请登录")
+                      this.$router.push("/login");
                     })
                 } else {
                     console.log("error submit!!");

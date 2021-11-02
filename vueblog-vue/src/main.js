@@ -14,6 +14,8 @@ import "./axios.js"
 //导入mavon-editor模块和他的css
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
+//导入permission.js
+import "./permission.js"
 
 //显式声明ElementUI模块
 Vue.use(ElementUI)
